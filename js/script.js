@@ -5,27 +5,25 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return `You Tied! You both chose ${capitalizeFirstLetter(computerSelection)}!`
+        return `You Tied This Round! You both chose ${capitalizeFirstLetter(computerSelection)}!`
     } else if (playerSelection === "rock") {
         if (computerSelection === "paper") {
-            return "You Lost! Paper beats Rock!"
+            return "You Lost This Round! Paper beats Rock!"
         } else {
-            return "You Won! Rock beats Scissors!"
+            return "You Won This Round! Rock beats Scissors!"
         }
     } else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
-            return "You Won! Paper beats Rock!"
+            return "You Won This Round! Paper beats Rock!"
         } else {
-            return "You Lost! Scissors beats Paper!"
+            return "You Lost This Round! Scissors beats Paper!"
         }
     } else if (playerSelection === "scissors") {
         if (computerSelection === "rock") {
-            return "You Lost! Rock beats Scissors!"
+            return "You Lost This Round! Rock beats Scissors!"
         } else {
-            return "You Won! Scissors beats Paper!"
+            return "You Won This Round! Scissors beats Paper!"
         }
-    } else {
-        return "Please choose either Rock, Paper, or Scissors!"
     }
 }
 
@@ -37,17 +35,19 @@ const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
+const message = document.querySelector("#message");
+
 rock.addEventListener("click", () => {
     let result = playRound("rock", getComputerChoice());
-    console.log(result);
+    message.textContent = result;
 })
 
 paper.addEventListener("click", () => {
     let result = playRound("paper", getComputerChoice());
-    console.log(result);
+    message.textContent = result;
 })
 
 scissors.addEventListener("click", () => {
     let result = playRound("scissors", getComputerChoice());
-    console.log(result);
+    message.textContent = result;
 })
