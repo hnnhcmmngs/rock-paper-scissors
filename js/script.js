@@ -27,6 +27,8 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+const body = document.querySelector("body");
+
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
@@ -35,26 +37,41 @@ const message = document.querySelector("#message");
 
 let playerScore = 0;
 let computerScore = 0;
+let rounds = 0;
 
 const player = document.querySelector("#player");
 const computer = document.querySelector("#computer");
+
+let gameOverMessage = document.createElement("div");
 
 rock.addEventListener("click", () => {
     let result = playRound("rock", getComputerChoice());
     message.textContent = result;
     updateScore(result);
+    rounds += 1;
+    if (rounds === 5) {
+        endGame();
+    }
 })
 
 paper.addEventListener("click", () => {
     let result = playRound("paper", getComputerChoice());
     message.textContent = result;
     updateScore(result);
+    rounds += 1;
+    if (rounds === 5) {
+        endGame();
+    }
 })
 
 scissors.addEventListener("click", () => {
     let result = playRound("scissors", getComputerChoice());
     message.textContent = result;
     updateScore(result);
+    rounds += 1;
+    if (rounds === 5) {
+        endGame();
+    }
 })
 
 function updateScore(result) {
@@ -65,4 +82,20 @@ function updateScore(result) {
         computerScore += 1;
         computer.textContent = `Computer Score = ${computerScore}`;
     }
+}
+
+function endGame() {
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    let gameResult;
+    if (playerScore > computerScore) {
+        gameResult = "The Game is Over! You Won!";
+    } else if (playerScore < computerScore) {
+        gameResult = "The Game is Over! You Lost!";
+    } else {
+        gameResult = "The Game is Over! You Tied!";
+    }
+    gameOverMessage.textContent = gameResult;
+    body.appendChild(gameOverMessage);
 }
