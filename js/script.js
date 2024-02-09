@@ -84,8 +84,11 @@ resetGame.addEventListener("click", () => {
     player.textContent = `Player Score = ${playerScore}`;
     computer.textContent = `Computer Score = ${computerScore}`;
     rock.disabled = false;
+    rock.style.opacity = "1";
     paper.disabled = false;
+    paper.style.opacity = "1";
     scissors.disabled = false;
+    scissors.style.opacity = "1";
     message.textContent = "Please choose an option above!";
     body.removeChild(gameOverMessage);
     resetGame.disabled = true;
@@ -103,8 +106,11 @@ function updateScore(result) {
 
 function endGame() {
     rock.disabled = true;
+    rock.style.opacity = ".4";
     paper.disabled = true;
+    paper.style.opacity = ".4";
     scissors.disabled = true;
+    scissors.style.opacity = ".4";
     let gameResult;
     if (playerScore > computerScore) {
         gameResult = "The Game is Over! You Won!";
@@ -114,6 +120,8 @@ function endGame() {
         gameResult = "The Game is Over! You Tied!";
     }
     gameOverMessage.textContent = gameResult;
+    gameOverMessage.style.fontSize = "32px";
+    gameOverMessage.style.fontWeight = "bold";
     body.insertBefore(gameOverMessage, resetGame);
     resetGame.disabled = false;
 }
