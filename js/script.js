@@ -44,6 +44,9 @@ const computer = document.querySelector("#computer");
 
 let gameOverMessage = document.createElement("div");
 
+const resetGame = document.querySelector("#reset");
+resetGame.disabled = true;
+
 rock.addEventListener("click", () => {
     let result = playRound("rock", getComputerChoice());
     message.textContent = result;
@@ -74,6 +77,20 @@ scissors.addEventListener("click", () => {
     }
 })
 
+resetGame.addEventListener("click", () => {
+    playerScore = 0;
+    computerScore = 0;
+    rounds = 0;
+    player.textContent = `Player Score = ${playerScore}`;
+    computer.textContent = `Computer Score = ${computerScore}`;
+    rock.disabled = false;
+    paper.disabled = false;
+    scissors.disabled = false;
+    message.textContent = "Please choose an option above!";
+    body.removeChild(gameOverMessage);
+    resetGame.disabled = true;
+})
+
 function updateScore(result) {
     if (result.includes("Won")) {
         playerScore += 1;
@@ -97,5 +114,6 @@ function endGame() {
         gameResult = "The Game is Over! You Tied!";
     }
     gameOverMessage.textContent = gameResult;
-    body.appendChild(gameOverMessage);
+    body.insertBefore(gameOverMessage, resetGame);
+    resetGame.disabled = false;
 }
