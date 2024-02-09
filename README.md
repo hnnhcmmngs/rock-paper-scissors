@@ -12,4 +12,6 @@ game lasts for five rounds. After the five rounds, a game over
 message is displayed that tells the player if they won or lost and
 there is the option to reset the webpage and play a new game.
 
+A live preview of the website can be accessed at: https://hnnhcmmngs.github.io/rock-paper-scissors/
+
 [Images by Clker-Free-Vector-Images via Pixabay](https://pixabay.com/users/clker-free-vector-images-3736/)
